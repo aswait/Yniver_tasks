@@ -1,7 +1,6 @@
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 #define E 1e-5
-
 
 int main() {
     float x, y, a;
