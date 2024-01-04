@@ -1,28 +1,29 @@
 #include <stdio.h>
-#include <wchar.h>
+#include <string.h>
 
 #define DLWRD 80
 
 int main() {
-    wchar_t word[DLWRD];
-    wchar_t c;
+    char word[DLWRD];
+    char c;
     int i, k;
     i = 0;
     k = 0;
     printf("Введите строку символов:\n");
-    c = getwchar();
-    while (c != L'\n') {
-        if (c == L' ') {
-            c = getwchar();
+    c = getchar();
+    while (c != '\n') {
+        if (c == ' ') {
+            c = getchar();
         } else {
             ++k;
             do {
                 word[i] = c;
-                c = getwchar();
+                c = getchar();
                 ++i;
-            } while (c != L' ' && c != L'\n');
-            if (word[i - 1] == L'а') {
-                printf("%ls\tпорядковый номер: %d\n", word, k);
+            } while (c != ' ' && c != '\n');
+            word[i] = '\0'; // Добавьте нулевой символ в конец строки
+            if (strcmp(&word[i - 2], "а") == 0) { // Используйте strcmp для сравнения строк
+                printf("%s\tпорядковый номер: %d\n", word, k);
             }
             for (int j = 0; j <= i; j++) {
                 word[j] = ' ';
